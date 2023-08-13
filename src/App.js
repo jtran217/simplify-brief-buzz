@@ -8,6 +8,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 function App() {
+
   const [url, setUrl] = useState(
     `${process.env.REACT_APP_URL}`
   );
@@ -34,11 +35,11 @@ function App() {
         .then((array) => {
           return array.slice(0, 1);
         });
-      console.log(response);
+     
       for await (let index of response) {
-        console.log(index.content);
+      
         const aiAsk = `Title:${index.title},description:${index.content}, summarize this news and return in format of Title:... Content:..., please do not have any spaces at beginning of response`;
-        console.log(aiAsk);
+        
         const chatResponse = await openai
           .createCompletion({
             model: "text-davinci-003",
@@ -48,7 +49,7 @@ function App() {
           })
           .then((res) => finishedSummary.push(res.data.choices[0].text));
       }
-      console.log(finishedSummary)
+      
 
     } catch (e) {
       console.log(e);
@@ -56,7 +57,7 @@ function App() {
     const filteredArray = finishedSummary.map((summary) => {
       try {
         const split = summary.split("\n");
-        console.log(split);
+        ;
         return {
           title: split[2].replace("Title: ", ""),
           content: split[3].replace("Content: ", ""),
