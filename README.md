@@ -10,7 +10,8 @@ Live Website: https://simplify-brief-buzz.vercel.app/
 
 
 ## 🛠 Skills
-Javascript, HTML, CSS
+Language: Javascript, HTML, CSS
+Framework: React
 
 
 ## Future Plans
